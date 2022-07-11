@@ -1,0 +1,14 @@
+.about-project__article_header {
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__article_header {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

@@ -1,0 +1,23 @@
+.footer__text {
+    font: inherit;
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0 20px 0 0;
+}
+
+.footer__text:last-child {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__text {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 12px;
+        margin-right: 0;
+    }
+
+    .footer__text:last-child {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,26 @@
+.techs__text {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    margin: 26px auto 0;
+    max-width: 460px;
+}
+
+@media screen and (max-width: 1023px) {
+    .techs__text {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 22px auto 0;
+        max-width: 460px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .techs__text {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 24px auto 0;
+        max-width: 292px;
+    }
+}

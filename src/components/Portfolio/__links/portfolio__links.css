@@ -1,0 +1,19 @@
+.portfolio__links{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.portfolio__links:last-child{
+    padding-bottom: 0;
+    border: none;
+}
+
+@media screen and (max-width:767px){
+    .portfolio__links{
+        margin-top: 20px;
+    }
+}

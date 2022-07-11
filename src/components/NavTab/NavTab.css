@@ -1,0 +1,21 @@
+.nav-tab {
+    display: flex;
+    margin: 151px auto 0;
+    padding-bottom: 30px;
+    max-width: 308px;
+}
+
+@media screen and (max-width: 1023px) {
+    .nav-tab {
+        margin: 314px auto 0;
+        max-width: 258px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .nav-tab {
+        margin: 212px auto 0;
+        padding-bottom: 17px;
+        max-width: 258px;
+    }
+}

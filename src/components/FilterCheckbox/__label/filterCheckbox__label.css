@@ -1,0 +1,15 @@
+.filterCheckbox__label{
+    display: flex;
+}
+
+@media screen and (max-width:1023px){
+    .filterCheckbox__label{
+        flex-direction: row-reverse;
+    }
+}
+
+@media screen and (max-width:767px){
+    .filterCheckbox__label{
+        flex-direction: row-reverse;
+    }
+}

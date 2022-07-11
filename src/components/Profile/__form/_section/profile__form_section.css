@@ -1,0 +1,11 @@
+.profile__form_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile__form_section:first-child {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E8E8E8;
+    margin: 0 0 17px;
+}

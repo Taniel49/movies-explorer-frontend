@@ -1,0 +1,22 @@
+.portfolio__student-info_bio_description {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 0 99px;
+}
+
+@media screen and (max-width: 1023px) {
+    .portfolio__student-info_bio_description {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 87px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__student-info_bio_description {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 0 40px;
+    }
+}

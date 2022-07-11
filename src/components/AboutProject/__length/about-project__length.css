@@ -1,0 +1,28 @@
+.about-project__length {
+    min-width: 228px;
+    text-align: center;
+}
+
+.about-project__length:nth-child(2) {
+    min-width: 912px;
+}
+
+@media screen and (max-width: 1023px) {
+    .about-project__length {
+        min-width: 140px;
+    }
+
+    .about-project__length:nth-child(2) {
+        min-width: 528px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__length {
+        min-width: 100px;
+    }
+
+    .about-project__length:nth-child(2) {
+        min-width: 184px;
+    }
+}

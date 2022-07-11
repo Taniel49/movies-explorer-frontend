@@ -1,0 +1,27 @@
+.techs__tech {
+    min-width: 90px;
+    background-color: #E8E8E8;
+    border-radius: 10px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 60px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 1023px) {
+    .techs__tech {
+        min-width: 84px;
+        line-height: 57px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .techs__tech {
+        min-width: 84px;
+        line-height: 57px;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}

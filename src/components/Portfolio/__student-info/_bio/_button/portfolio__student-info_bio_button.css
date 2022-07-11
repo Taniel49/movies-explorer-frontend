@@ -1,0 +1,26 @@
+.portfolio__student-info_bio_button {
+    appearance: none;
+    background-color: transparent;
+    background-position: center;
+    padding: 0;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+}
+
+.portfolio__student-info_bio_button:hover {
+    transition: ease-in;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__student-info_bio_button {
+        font-size: 14px;
+        line-height: 17px;
+        margin-right: 26px;
+    }
+}

@@ -1,0 +1,21 @@
+.profile__form_input {
+    font-family: inherit;
+    border: none;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: right;
+    background: transparent;
+    width: 100%;
+}
+
+.profile__form_input:focus {
+    outline: none;
+}
+
+.profile__form_input::placeholder {
+    font-family: inherit;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: right;
+    color: black;
+}

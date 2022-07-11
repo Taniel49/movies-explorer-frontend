@@ -1,0 +1,22 @@
+.profile__logout-button {
+    display: block;
+    appearance: none;
+    background-color: transparent;
+    background-position: center;
+    padding: 0;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FF4062;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin: 16px auto 0;
+    max-width: 410px;
+}
+
+.profile__logout-button:hover {
+    transition: ease-in;
+    opacity: 0.6;
+}

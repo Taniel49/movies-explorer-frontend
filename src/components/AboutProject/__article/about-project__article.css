@@ -1,0 +1,31 @@
+.about-project__article {
+    min-width: 550px;
+}
+
+.about-project__article:first-child {
+    margin-right: 40px;
+}
+
+@media screen and (max-width: 1023px) {
+    .about-project__article {
+        min-width: 319px;
+    }
+
+    .about-project__article:first-child {
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__article {
+        min-width: 284px;
+    }
+
+    .about-project__article:first-child {
+        margin-right: 0;
+    }
+
+    .about-project__article:nth-child(2) {
+        margin-top: 56px;
+    }
+}

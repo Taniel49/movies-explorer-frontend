@@ -1,0 +1,26 @@
+.card__favourites-button{
+    position: absolute;
+    margin: 14px 14px 0;
+    left: 72%;
+    top: 0;
+    font-size: 10px;
+    line-height: 9px;
+    text-align: center;
+    background-color: white;
+    width: 72px;
+    height: 21px;
+    border:none;
+    appearance: none;
+    border-radius: 30px;
+}
+
+.card__favourites-button:hover{
+    transition: ease-in;
+    opacity: 0.8;
+}
+
+@media screen and (max-width:767px){
+    .card__favourites-button{
+        left: 68%;
+    }
+}

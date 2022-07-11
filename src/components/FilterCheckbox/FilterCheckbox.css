@@ -1,0 +1,17 @@
+.filter-checkbox{
+    margin-top: 32px;
+}
+
+@media screen and (max-width:1023px){
+    .filter-checkbox{
+        max-width: 169px;
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width:767px){
+    .filter-checkbox{
+        max-width: 169px;
+        margin: 40px auto 0;
+    }
+}

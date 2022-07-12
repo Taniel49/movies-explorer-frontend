@@ -129,3 +129,15 @@
 @import url("components/Login/__register/login__register.css");
 @import url("components/Login/__register/_text/login__register_text.css");
 @import url("components/Login/__register/_register-button/login__register_register-button.css");
+
+/* Menu */
+@import url("components/Menu/Menu.css");
+@import url("components/Menu/_opened/menu_opened.css");
+@import url("components/Menu/__container/menu__container.css");
+@import url("components/Menu/__navigation/menu__navigation.css");
+@import url("components/Menu/__navigation/_block-top/menu__navigation_block-top.css");
+@import url("components/Menu/__navigation/__block-bottom/menu__navigation__block-bottom.css");
+@import url("components/Menu/__navigation/__profile-logo/menu__navigation__profile-logo.css");
+@import url("components/Menu/__navigation/__block-top-button/menu__navigation__block-top-button.css");
+@import url("components/Menu/__navigation/__block-bottom-button/menu__navigation__block-bottom-button.css");
+@import url("components/Menu/__close-button/menu__close-button.css");

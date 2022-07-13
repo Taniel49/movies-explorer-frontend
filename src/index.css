@@ -45,6 +45,9 @@
 @import url("components/Card/__length/card__length.css");
 @import url("components/Card/__title/card__title.css");
 @import url("components/Card/__image/card__image.css");
+@import url("components/Card/__hidden/card__hidden.css");
+@import url("components/Card/__delete-button/card__delete-button.css");
+@import url("components/Card/__saved-sign/card__saved-sign.css");
 
 /* Footer */
 @import url("components/Footer/Footer.css");
@@ -60,6 +63,7 @@
 /* NavTab */
 @import url("components/NavTab/NavTab.css");
 @import url("components/NavTab/__link/nav-tab__link.css");
+@import url("components/NavTab/__list-item/nav-tab__list-item.css");
 
 /* AboutProject */
 @import url("components/AboutProject/AboutProject.css");
@@ -97,6 +101,7 @@
 @import url("components/Portfolio/__links/portfolio__links.css");
 @import url("components/Portfolio/__links/_text/portfolio__links_text.css");
 @import url("components/Portfolio/__links/_link/portfolio__links_link.css");
+@import url("components/Portfolio/__links-list/portfolio__links-list.css");
 
 /* Profile */
 @import url("components/Profile/Profile.css");

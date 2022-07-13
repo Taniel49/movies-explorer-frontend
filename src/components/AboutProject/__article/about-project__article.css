@@ -1,5 +1,5 @@
 .about-project__article {
-    min-width: 550px;
+    max-width: 550px;
 }
 
 .about-project__article:first-child {
@@ -19,10 +19,13 @@
 @media screen and (max-width: 767px) {
     .about-project__article {
         min-width: 284px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .about-project__article:first-child {
-        margin-right: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .about-project__article:nth-child(2) {

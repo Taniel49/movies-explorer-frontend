@@ -10,7 +10,7 @@
     width: fit-content;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1175px) {
     .moviesCardList {
         max-width: 708px;
         grid-template-columns: repeat(2, 339px);

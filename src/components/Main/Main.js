@@ -6,12 +6,12 @@ import Portfolio from "../Portfolio/Portfolio";
 
 function Main() {
     return (
-        <div>
+        <main>
             <Promo/>
             <AboutProject/>
             <Techs/>
             <Portfolio/>
-        </div>
+        </main>
     );
 }
 

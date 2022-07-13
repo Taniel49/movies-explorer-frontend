@@ -10,7 +10,7 @@
 }
 
 .register__form_input:focus {
-    outline: none;
+    outline: solid 1px rgb(118, 118, 118);
 }
 
 .register__form_input::placeholder {

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 function Login() {
     return (
-        <div className="login">
+        <section className="login">
             <Link exact to="/">
                 <img src={logo} alt="Лого"/>
             </Link>
@@ -22,7 +22,7 @@ function Login() {
                     <button className="login__register_register-button">Регистрация</button>
                 </Link>
             </div>
-        </div>
+        </section>
     );
 }
 

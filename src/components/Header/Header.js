@@ -5,13 +5,13 @@ import Menu from "../Menu/Menu";
 
 function Header(props) {
     return (
-        <div>
-            <header className="header">
+        <header>
+            <div className="header">
                 <Link exact to="/"><img className="header__logo" src={logo} alt="Лого"/></Link>
                 {props.nav}
-            </header>
+            </div>
             <Menu/>
-        </div>
+        </header>
     );
 }
 

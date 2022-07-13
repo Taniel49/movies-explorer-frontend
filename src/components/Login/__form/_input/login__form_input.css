@@ -10,7 +10,7 @@
 }
 
 .login__form_input:focus {
-    outline: none;
+    outline: solid 1px rgb(118, 118, 118);
 }
 
 .login__form_input::placeholder {

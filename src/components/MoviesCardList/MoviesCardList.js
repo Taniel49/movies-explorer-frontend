@@ -3,17 +3,17 @@ import Card from "../Card/Card";
 
 function MoviesCardList() {
     return (
-        <div>
-            <section className="moviesCardList">
+        <section>
+            <div className="moviesCardList">
                 <Card/>
                 <Card/>
                 <Card/>
                 <Card/>
                 <Card/>
                 <Card/>
-            </section>
+            </div>
             <button className="moviesCardList__more-button">Ещё</button>
-        </div>
+        </section>
     );
 }
 

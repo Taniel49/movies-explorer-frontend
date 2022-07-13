@@ -1,7 +1,7 @@
 .nav-tab {
     display: flex;
     margin: 151px auto 0;
-    padding-bottom: 30px;
+    padding: 0 0 30px;
     max-width: 308px;
 }
 

@@ -2,9 +2,9 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 
 function Profile(props) {
+    const history = useHistory();
     const [email, setEmail] = React.useState('');
     const [name, setName] = React.useState('');
-    const history = useHistory();
 
     function handleEmailChange(e) {
         setEmail(e.target.value);

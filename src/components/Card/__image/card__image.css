@@ -1,4 +1,8 @@
 .card__image {
+    object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
     max-width: 360px;
     max-height: 201px;
 }

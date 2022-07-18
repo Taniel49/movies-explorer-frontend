@@ -1,14 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function Menu() {
+function Menu(props) {
+    const MenuClassName = (
+        `menu ${props.isOpenMenu ? 'menu_opened' : ''}`
+    );
+
     return (
-        <div className="menu">
+        <div className={MenuClassName}>
             <div className="menu__container">
-                <button className="menu__close-button" type="button"></button>
+                <button className="menu__close-button" type="button" onClick={props.closeMenu}></button>
                 <div className="menu__navigation">
                     <div className="menu__navigation_block-top">
-                        <Link exact to="/">
+                        <Link to="/">
                             <button className="menu__navigation__block-top-button">Главная</button>
                         </Link>
                         <Link to="/movies">

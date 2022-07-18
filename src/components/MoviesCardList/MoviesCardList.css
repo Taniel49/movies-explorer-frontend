@@ -1,7 +1,6 @@
 .moviesCardList {
     display: grid;
     grid-template-columns: repeat(3, 360px);
-    grid-template-rows: repeat(2, 231px);
     grid-auto-rows: 231px;
     column-gap: 30px;
     row-gap: 60px;
@@ -14,7 +13,6 @@
     .moviesCardList {
         max-width: 708px;
         grid-template-columns: repeat(2, 339px);
-        grid-template-rows: repeat(3, 231px);
         grid-auto-rows: 231px;
         column-gap: 30px;
         row-gap: 47px;
@@ -27,7 +25,6 @@
         max-width: 300px;
         grid-auto-rows: 199px;
         grid-template-columns: repeat(1, 300px);
-        grid-template-rows: repeat(6, 199px);
         column-gap: 30px;
         row-gap: 39px;
         margin: 90px auto 0;

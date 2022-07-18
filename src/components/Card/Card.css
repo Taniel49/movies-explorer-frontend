@@ -5,6 +5,14 @@
     border-radius: 6px;
 }
 
+.card:hover .card__favourites-button{
+    display: block;
+}
+
+.card:hover .card__delete-button{
+    display: block;
+}
+
 @media screen and (max-width:1023px){
     .card{
         max-width: 339px;

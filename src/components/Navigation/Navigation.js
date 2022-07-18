@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import menu from '../../images/menu.svg'; 
+import menu from '../../images/menu.svg';
 
-function Navigation() {
+function Navigation(props) {
     return (
         <div className="navigation">
             <div className="navigation__block">
@@ -19,7 +19,7 @@ function Navigation() {
                 </Link>
                 <div className="navigation__profile-logo"></div>
             </div>
-            <button className="navigation__menu-button"><img src={menu} alt="Меню"/></button>
+            <button className="navigation__menu-button" onClick={props.onMenu}><img src={menu} alt="Меню"/></button>
         </div>
     );
 }

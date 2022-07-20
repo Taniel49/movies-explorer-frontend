@@ -3,6 +3,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Movies from "../Movies/Movies";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function ContentMovies(props) {
     return (
@@ -13,8 +14,14 @@ function ContentMovies(props) {
                             handleMenu={props.handleMenu}
                             isOpenMenu={props.isOpenMenu}
                             closeMenu={props.closeMenu}/>
-                    <Movies/>
+                    <Movies handleMoviesSearch={props.handleMoviesSearch}
+                            handleFavouritesClick={props.handleFavouritesClick}
+                            handlePreloader={props.handlePreloader}
+                            isLoading = {props.isLoading}/>
                     <Footer/>
+                    <InfoTooltip isOpen={props.isOpen}
+                                 onClose={props.onClose}
+                                 caption={props.caption}/>
                 </div>
             </div>
         </CurrentUserContext.Provider>

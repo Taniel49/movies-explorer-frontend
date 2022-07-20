@@ -11,12 +11,17 @@ import ProtectedRoute from "../../utils/ProtectedRoute";
 import ContentProfile from "../Content/ContentProfile";
 import ContentMovies from "../Content/ContentMovies";
 import ContentSavedMovies from "../Content/ContentSavedMovies";
+import apiMovies from "../../utils/MoviesApi";
 
 function App() {
     const history = useHistory();
     const [isOpenMenu, setIsOpenMenu] = React.useState(false);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [currentUser, setCurrentUser] = React.useState({});
+    const [isOpenPopup, setIsOpenPopup] = React.useState(false);
+    const [popupCaption, setPopupCaption] = React.useState('');
+    const [savedCards, setSavedCards] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {
         if (isLoggedIn) {
@@ -24,8 +29,20 @@ function App() {
                 .then((result) => {
                     setCurrentUser(result.data)
                 }).catch((err) => {
-                console.log(err);
-            })
+                    setPopupCaption(err);
+                    handlePopup();
+                    console.log(err)
+                }
+            )
+            api.getMovies().then((res) => JSON.stringify(res.data))
+                .then((res) => {
+                    setSavedCards(JSON.parse(res));
+                }).catch((err) => {
+                    setPopupCaption(err);
+                    handlePopup();
+                    console.log(err)
+                }
+            );
         }
 
         if (localStorage.getItem('token')) {
@@ -37,10 +54,70 @@ function App() {
                         setIsLoggedIn(true);
                         history.push("/movies");
                     }
-                }).catch((err) => console.log(err));
+                }).catch((err) => {
+                        setPopupCaption(err);
+                        handlePopup();
+                        console.log(err)
+                    }
+                )
+                ;
             }
         }
     }, [history, isLoggedIn]);
+
+    function handleMoviesSearch() {
+        apiMovies.getMovies().then((res) => {
+            setIsLoading(false);
+            localStorage.setItem('movies', JSON.stringify(res));
+        }).catch((err) => {
+                setIsLoading(false)
+                setPopupCaption(err);
+                handlePopup();
+                console.log(err)
+            }
+        )
+    }
+
+    function handleFavouritesClick(card) {
+        api.postMovie({
+            country: card.country,
+            director: card.director,
+            duration: card.duration,
+            year: card.year,
+            description: card.description,
+            image: `https://api.nomoreparties.co/${card.image.url}`,
+            trailerLink: card.trailerLink,
+            nameRU: card.nameRU,
+            nameEN: card.nameEN,
+            thumbnail: `https://api.nomoreparties.co/${card.image.url}`,
+            movieId: card.id,
+        }).then((res) => JSON.stringify(res.data))
+            .then((res) => {
+                console.log(savedCards)
+                setSavedCards([JSON.parse(res), ...savedCards]);
+                console.log(savedCards)
+            }).catch((err) => {
+                setPopupCaption(err);
+                handlePopup();
+                console.log(err)
+            }
+        )
+    }
+
+    function handleDeleteClick(card) {
+        api.deleteMovie(card._id).then(() => {
+            const newArray = savedCards.filter((c) => {
+                console.log(typeof c)
+                return c._id !== card._id
+            })
+            setSavedCards(newArray)
+        }).catch((err) => {
+                setPopupCaption(err);
+                handlePopup();
+                console.log(err)
+            }
+        )
+    }
 
     function handleLogin(email, password) {
         Auf.authorize(email, password)
@@ -50,6 +127,8 @@ function App() {
                 }
             )
             .catch((err) => {
+                setPopupCaption(err);
+                handlePopup();
                 console.log(err);
             });
     }
@@ -59,15 +138,31 @@ function App() {
             if (res) {
                 history.push('/signin');
             }
-        }).catch((err) => console.log(err));
+        }).catch((err) => {
+                setPopupCaption(err);
+                handlePopup();
+                console.log(err)
+            }
+        );
     }
 
     function handleProfile(name, email) {
         api.patchProfile(name, email).then((result) => {
             setCurrentUser(result.data)
         }).catch((err) => {
-            console.log(err);
-        })
+                setPopupCaption(err);
+                handlePopup();
+                console.log(err)
+            }
+        )
+    }
+
+    function handlePopup() {
+        setIsOpenPopup(true)
+    }
+
+    function closePopup() {
+        setIsOpenPopup(false)
     }
 
     function handleMenu() {
@@ -78,15 +173,25 @@ function App() {
         setIsOpenMenu(false)
     }
 
+    function handlePreloader() {
+        setIsLoading(true);
+    }
+
     return (
         <div className="root">
             <div className="page root__page">
                 <Switch>
                     <Route path="/signin">
-                        <Login onLogin={handleLogin}/>
+                        <Login onLogin={handleLogin}
+                               isOpen={isOpenPopup}
+                               onClose={closePopup}
+                               caption={popupCaption}/>
                     </Route>
                     <Route path="/signup">
-                        <Register onRegister={handleRegister}/>
+                        <Register onRegister={handleRegister}
+                                  isOpen={isOpenPopup}
+                                  onClose={closePopup}
+                                  caption={popupCaption}/>
                     </Route>
                     <Route exact path="/">
                         <Header isLoggedIn={isLoggedIn}
@@ -98,29 +203,44 @@ function App() {
                     </Route>
                     <ProtectedRoute exact
                                     path="/profile"
-                                    loggedIn={isLoggedIn}
+                                    isLoggedIn={isLoggedIn}
                                     currentUser={currentUser}
                                     handleProfile={handleProfile}
                                     component={ContentProfile}
                                     handleMenu={handleMenu}
                                     isOpenMenu={isOpenMenu}
-                                    closeMenu={closeMenu}/>
+                                    closeMenu={closeMenu}
+                                    isOpen={isOpenPopup}
+                                    onClose={closePopup}
+                                    caption={popupCaption}/>
                     <ProtectedRoute exact
                                     path="/movies"
-                                    loggedIn={isLoggedIn}
+                                    isLoggedIn={isLoggedIn}
                                     currentUser={currentUser}
                                     component={ContentMovies}
                                     handleMenu={handleMenu}
                                     isOpenMenu={isOpenMenu}
-                                    closeMenu={closeMenu}/>
+                                    closeMenu={closeMenu}
+                                    handleMoviesSearch={handleMoviesSearch}
+                                    handleFavouritesClick={handleFavouritesClick}
+                                    isOpen={isOpenPopup}
+                                    onClose={closePopup}
+                                    caption={popupCaption}
+                                    handlePreloader={handlePreloader}
+                                    isLoading={isLoading}/>
                     <ProtectedRoute exact
                                     path="/saved-movies"
-                                    loggedIn={isLoggedIn}
+                                    isLoggedIn={isLoggedIn}
                                     currentUser={currentUser}
                                     component={ContentSavedMovies}
                                     handleMenu={handleMenu}
                                     isOpenMenu={isOpenMenu}
-                                    closeMenu={closeMenu}/>
+                                    closeMenu={closeMenu}
+                                    savedCards={savedCards}
+                                    handleDeleteClick={handleDeleteClick}
+                                    isOpen={isOpenPopup}
+                                    onClose={closePopup}
+                                    caption={popupCaption}/>
                 </Switch>
             </div>
         </div>

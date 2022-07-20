@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from "../Card/Card";
 import {useWindowResize} from "../../utils/useWindowResize";
-import api from "../../utils/MainApi";
 
 function MoviesCardList(props) {
     const [cardsForDisplay, setCardsForDisplay] = React.useState([]);
@@ -28,7 +27,9 @@ function MoviesCardList(props) {
     }
 
     React.useEffect(() => {
-        if (props.cards.length > cardsForDisplayNumber) {
+        if (props.isSavedCards) {
+            setCardsForDisplay(props.cards);
+        } else if (props.cards.length > cardsForDisplayNumber) {
             setCardsForDisplay(props.cards.slice(0, cardsForDisplayNumber));
         } else {
             setCardsForDisplay(props.cards);
@@ -49,29 +50,21 @@ function MoviesCardList(props) {
         setCardsForDisplay(newArray);
     }
 
-    function handleDeleteClick(card){
-        api.deleteMovie(card._id).then(() => {
-            setCardsForDisplay((state) => state.filter((c) => {
-                return c._id !== card._id
-            }))
-        }).catch((err) => {
-            console.log(err);
-        });
-    }
-
     return (
         <section>
             <div className="moviesCardList">
-                {cardsForDisplay.map((card, i) => (
+                {cardsForDisplay.map((card) => (
                     <Card card={card}
-                          key={card.id}
-                          favouritesButton = {props.favouritesButton}
-                          deleteButton = {props.deleteButton}
-                          onDeleteClick = {handleDeleteClick}
+                          key={card._id || card.id}
+                          ifSavedCard={props.isSavedCards}
+                          favouritesButton={props.favouritesButton}
+                          deleteButton={props.deleteButton}
+                          onDeleteClick={props.handleDeleteClick}
+                          handleFavouritesClick={props.handleFavouritesClick}
                     />
                 ))}
             </div>
-            {(props.cards.length > cardsForDisplayNumber) ? <button className="moviesCardList__more-button"
+            {((props.cards.length > cardsForDisplayNumber) && !props.isSavedCards) ? <button className="moviesCardList__more-button"
                                                                     onClick={handleMoreButtonClick}>Ещё</button> :
                 <div></div>}
         </section>

@@ -2,6 +2,7 @@ import React from "react";
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Profile from "../Profile/Profile";
 import Header from "../Header/Header";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function ContentProfile(props) {
     return (
@@ -15,6 +16,9 @@ function ContentProfile(props) {
                     <Profile currentUser={props.currentUser}
                              onSubmit={props.handleProfile}
                     />
+                    <InfoTooltip isOpen={props.isOpen}
+                                 onClose={props.onClose}
+                                 caption={props.caption}/>
                 </div>
             </div>
         </CurrentUserContext.Provider>

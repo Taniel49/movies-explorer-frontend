@@ -55,7 +55,7 @@ class APIMain {
                 year: item.year,
                 description: item.description,
                 image: item.image,
-                trailer: item.trailer,
+                trailerLink: item.trailerLink,
                 nameRU: item.nameRU,
                 nameEN: item.nameEN,
                 thumbnail: item.thumbnail,
@@ -80,6 +80,6 @@ class APIMain {
 }
 
 
-const api = new APIMain('http://localhost:3001', '');
+const api = new APIMain('https://api.mydiploma.students.nomoreparties.sbs', '');
 api.setAuthorisation(localStorage.getItem('token'));
 export default api;

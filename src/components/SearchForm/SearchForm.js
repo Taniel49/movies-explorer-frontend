@@ -22,7 +22,7 @@ function SearchForm(props) {
                            onChange={handleSearchInputChange}/>
                     <button type="submit" className="search-form__submit-button">Найти</button>
                 </div>
-                <FilterCheckbox/>
+                <FilterCheckbox handleCkeckbox = {props.onChange}/>
             </form>
         </section>
     )

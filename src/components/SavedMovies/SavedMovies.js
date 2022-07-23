@@ -5,6 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 function SavedMovies(props) {
     const [isChecked, setIsChecked] = React.useState(true);
     const [cards, setCards] = React.useState(props.savedCards);
+    const [isNothingFound, setIsNothingFound] = React.useState(false);
 
     function handleCheckbox(event) {
         if (event.target.checked) {
@@ -20,9 +21,9 @@ function SavedMovies(props) {
                                                 nameRU = '',
                                                 duration = ''
                                             }) => {
-            return (nameEN + nameRU).toLowerCase().includes(searchInput.toLowerCase() && (!isChecked ? duration > 40 : true));
+            return (nameEN + nameRU).toLowerCase().includes(searchInput.toLowerCase()) && (!isChecked ? duration > 40 : true);
         });
-
+        (foundedMovies.length === 0) ? setIsNothingFound(true) : setIsNothingFound(false);
         setCards(foundedMovies);
     }
 
@@ -35,7 +36,8 @@ function SavedMovies(props) {
                 cards={cards}
                 favouritesButton={false}
                 deleteButton={true}
-                handleDeleteClick={props.handleDeleteClick}/>
+                handleDeleteClick={props.handleDeleteClick}
+                isNothingFound={isNothingFound}/>
         </div>
     );
 }

@@ -18,11 +18,17 @@ function SearchForm(props) {
         <section>
             <form className="search-form" onSubmit={handleSearchSubmit}>
                 <div className="search-form__search">
-                    <input className="search-form__input" type="text" required placeholder="Фильм"
+                    <input className="search-form__input"
+                           type="text"
+                           required
+                           placeholder="Фильм"
+                           defaultValue={(localStorage.getItem('searchResults') === null)
+                               ? null
+                               : (JSON.parse(localStorage.getItem('searchResults'))).input}
                            onChange={handleSearchInputChange}/>
                     <button type="submit" className="search-form__submit-button">Найти</button>
                 </div>
-                <FilterCheckbox handleCkeckbox = {props.onChange}/>
+                <FilterCheckbox handleCkeckbox={props.onChange}/>
             </form>
         </section>
     )

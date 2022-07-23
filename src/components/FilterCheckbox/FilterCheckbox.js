@@ -7,7 +7,12 @@ function FilterCheckbox(props) {
     return (
         <div className="filter-checkbox">
             <label className="filterCheckbox__label" htmlFor="short-movies">
-                <input className="filterCheckbox__input" type="checkbox" id="short-movies" defaultChecked={true}
+                <input className="filterCheckbox__input"
+                       type="checkbox"
+                       id="short-movies"
+                       defaultChecked={(localStorage.getItem('searchResults') === null)
+                               ? true
+                               : (JSON.parse(localStorage.getItem('searchResults'))).isChecked}
                        onChange={handleChange}/>
                 <span className="filterCheckbox__pseudo-item"></span>
                 <span className="filter-checkbox__label-text">Короткометражки</span>

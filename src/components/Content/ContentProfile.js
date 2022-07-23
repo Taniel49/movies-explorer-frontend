@@ -15,6 +15,7 @@ function ContentProfile(props) {
                             closeMenu={props.closeMenu}/>
                     <Profile currentUser={props.currentUser}
                              onSubmit={props.handleProfile}
+                             handleLogout = {props.handleLogout}
                     />
                     <InfoTooltip isOpen={props.isOpen}
                                  onClose={props.onClose}

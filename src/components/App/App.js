@@ -12,6 +12,7 @@ import ContentProfile from "../Content/ContentProfile";
 import ContentMovies from "../Content/ContentMovies";
 import ContentSavedMovies from "../Content/ContentSavedMovies";
 import apiMovies from "../../utils/MoviesApi";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 function App() {
     const history = useHistory();
@@ -29,7 +30,7 @@ function App() {
                 .then((result) => {
                     setCurrentUser(result.data)
                 }).catch((err) => {
-                    setPopupCaption(err);
+                    setPopupCaption(JSON.stringify(err.message));
                     handlePopup();
                     console.log(err)
                 }
@@ -38,7 +39,7 @@ function App() {
                 .then((res) => {
                     setSavedCards(JSON.parse(res));
                 }).catch((err) => {
-                    setPopupCaption(err);
+                    setPopupCaption(JSON.stringify(err.message));
                     handlePopup();
                     console.log(err)
                 }
@@ -55,7 +56,7 @@ function App() {
                         history.push("/movies");
                     }
                 }).catch((err) => {
-                        setPopupCaption(err);
+                        setPopupCaption(JSON.stringify(err.message));
                         handlePopup();
                         console.log(err)
                     }
@@ -71,7 +72,7 @@ function App() {
             localStorage.setItem('movies', JSON.stringify(res));
         }).catch((err) => {
                 setIsLoading(false)
-                setPopupCaption(err);
+                setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
                 console.log(err)
             }
@@ -97,7 +98,7 @@ function App() {
                 setSavedCards([JSON.parse(res), ...savedCards]);
                 console.log(savedCards)
             }).catch((err) => {
-                setPopupCaption(err);
+                setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
                 console.log(err)
             }
@@ -112,7 +113,7 @@ function App() {
             })
             setSavedCards(newArray)
         }).catch((err) => {
-                setPopupCaption(err);
+                setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
                 console.log(err)
             }
@@ -127,19 +128,28 @@ function App() {
                 }
             )
             .catch((err) => {
-                setPopupCaption(err);
+                setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
                 console.log(err);
             });
     }
 
+    function handleLogout() {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        history.push('/');
+    }
+
     function handleRegister(email, password, name) {
-        Auf.register(email, password, name).then((res) => {
-            if (res) {
-                history.push('/signin');
-            }
-        }).catch((err) => {
-                setPopupCaption(err);
+        Auf.register(email, password, name)
+            .then(() => {
+                    Auf.authorize(email, password).then(() => {
+                        setIsLoggedIn(true);
+                        history.push('/movies');
+                    })
+                }
+            ).catch((err) => {
+                setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
                 console.log(err)
             }
@@ -147,10 +157,13 @@ function App() {
     }
 
     function handleProfile(name, email) {
-        api.patchProfile(name, email).then((result) => {
+        api.patchProfile({
+            name: name,
+            email: email
+        }).then((result) => {
             setCurrentUser(result.data)
         }).catch((err) => {
-                setPopupCaption(err);
+                setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
                 console.log(err)
             }
@@ -174,7 +187,7 @@ function App() {
     }
 
     function handlePreloader() {
-        setIsLoading(true);
+        isLoading === true ? setIsLoading(false) : setIsLoading(true)
     }
 
     return (
@@ -212,7 +225,8 @@ function App() {
                                     closeMenu={closeMenu}
                                     isOpen={isOpenPopup}
                                     onClose={closePopup}
-                                    caption={popupCaption}/>
+                                    caption={popupCaption}
+                                    handleLogout={handleLogout}/>
                     <ProtectedRoute exact
                                     path="/movies"
                                     isLoggedIn={isLoggedIn}
@@ -241,6 +255,9 @@ function App() {
                                     isOpen={isOpenPopup}
                                     onClose={closePopup}
                                     caption={popupCaption}/>
+                    <Route path="*">
+                        <PageNotFound/>
+                    </Route>
                 </Switch>
             </div>
         </div>

@@ -4,8 +4,13 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 
 function Movies(props) {
-    const [cards, setCards] = React.useState([]);
-    const [isChecked, setIsChecked] = React.useState(true);
+    const [cards, setCards] = React.useState((localStorage.getItem('searchResults') === null)
+        ? []
+        : (JSON.parse(localStorage.getItem('searchResults'))).cards);
+    const [isChecked, setIsChecked] = React.useState((localStorage.getItem('searchResults') === null)
+        ? true
+        : (JSON.parse(localStorage.getItem('searchResults'))).isChecked);
+    const [isNothingFound, setIsNothingFound] = React.useState(false);
 
     function handleCheckbox(event) {
         if (event.target.checked) {
@@ -16,8 +21,10 @@ function Movies(props) {
     }
 
     function handleSearchSubmit(searchInput) {
-        props.handlePreloader();
-        props.handleMoviesSearch();
+        if (localStorage.getItem('movies') === null) {
+            props.handlePreloader();
+            props.handleMoviesSearch();
+        }
 
         const foundedMovies = JSON.parse(localStorage.getItem('movies')).filter(({
                                                                                      nameEN = '',
@@ -27,7 +34,15 @@ function Movies(props) {
             return (nameEN + nameRU).toLowerCase().includes(searchInput.toLowerCase()) && (!isChecked ? duration > 40 : true);
         });
 
+        (foundedMovies.length === 0) ? setIsNothingFound(true) : setIsNothingFound(false);
+
         setCards(foundedMovies);
+
+        localStorage.setItem('searchResults', JSON.stringify({
+            cards: foundedMovies,
+            isChecked: isChecked,
+            input: searchInput
+        }));
     }
 
     return (<div>
@@ -36,7 +51,8 @@ function Movies(props) {
         {props.isLoading ? <Preloader/> : <MoviesCardList cards={cards}
                                                           favouritesButton={true}
                                                           deleteButton={false}
-                                                          handleFavouritesClick={props.handleFavouritesClick}/>}
+                                                          handleFavouritesClick={props.handleFavouritesClick}
+                                                          isNothingFound={isNothingFound}/>}
     </div>);
 }
 

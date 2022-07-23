@@ -1,0 +1,22 @@
+.not-found__title {
+    padding: 0;
+    margin: 246px 0 0;
+    font-family: inherit;
+    font-size: 140px;
+    line-height: 169px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1023px) {
+    .not-found__title {
+        margin: 408px 0 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .not-found__title {
+        margin: 329px 0 0;
+        font-size: 80px;
+        line-height: 97px;
+    }
+}

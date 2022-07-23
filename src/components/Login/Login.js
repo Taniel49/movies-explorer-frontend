@@ -20,9 +20,18 @@ function Login(props) {
         `login__form_input ${!isValidPassword ? 'register__form_input-invalid' : ''}`
     );
 
+    function checkIsValidEmail(email) {
+        return /\S+@\S+\.\S+/.test(email);
+    }
+
     function handleEmailChange(e) {
-        setIsValidEmail(e.target.checkValidity());
-        !isValidEmail ? setErrorsEmail(e.target.validationMessage) : setErrorsEmail('');
+        if (!checkIsValidEmail(e.target.value)) {
+            setIsValidEmail(false);
+            setErrorsEmail('Введите корректный email');
+        } else {
+            setIsValidEmail(true);
+            setErrorsEmail('');
+        }
         setEmail(e.target.value);
     }
 
@@ -46,11 +55,13 @@ function Login(props) {
             <h1 className="login__header">Рады видеть!</h1>
             <form className="login__form" onSubmit={handleSubmit}>
                 <span className="login__form_text">E-mail</span>
-                <input className={emailClassName} placeholder={"pochta@yandex.ru"} onChange={handleEmailChange}/>
-                {isValidEmail ? <span className="form_error">{`${errorsEmail}`}</span> : <div></div>}
+                <input className={emailClassName}
+                       placeholder={"pochta@yandex.ru"}
+                       onChange={handleEmailChange}/>
+                {!isValidEmail ? <span className="form_error">{`${errorsEmail}`}</span> : <div></div>}
                 <span className="login__form_text">Пароль</span>
                 <input className={passwordClassName} type="password" onChange={handlePasswordChange}/>
-                {isValidPassword ? <span className="form_error">{`${errorsPassword}`}</span> : <div></div>}
+                {!isValidPassword ? <span className="form_error">{`${errorsPassword}`}</span> : <div></div>}
                 <button className={buttonClassName}>Войти</button>
             </form>
             <div className="login__register">

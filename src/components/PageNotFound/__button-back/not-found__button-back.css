@@ -1,0 +1,26 @@
+.not-found__button-back {
+    appearance: none;
+    background-color: transparent;
+    background-position: center;
+    margin: 184px 0 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    outline: none;
+}
+
+.not-found__button-back:hover {
+    transition: ease-in;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+    .not-found__button-back {
+        margin: 284px 0 0;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

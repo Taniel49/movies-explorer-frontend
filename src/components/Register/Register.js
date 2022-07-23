@@ -10,26 +10,34 @@ function Register(props) {
     const [errorsPassword, setErrorsPassword] = React.useState('');
     const [errorsEmail, setErrorsEmail] = React.useState('');
     const [errorsName, setErrorsName] = React.useState('');
-    const [isValidPassword, setIsValidPassword] = React.useState(true);
-    const [isValidEmail, setIsValidEmail] = React.useState(true);
-    const [isValidName, setIsValidName] = React.useState(true);
+    const [isValidPassword, setIsValidPassword] = React.useState(false);
+    const [isValidEmail, setIsValidEmail] = React.useState(false);
+    const [isValidName, setIsValidName] = React.useState(false);
     const buttonClassName = (
-        `register__form_submit-button ${ (!isValidPassword || !isValidEmail || !isValidName) ? 'register__form_submit-button_inactive' : ''}`
+        `register__form_submit-button ${(!isValidPassword || !isValidEmail || !isValidName) ? 'register__form_submit-button_inactive' : ''}`
     );
     const nameClassName = (
-        `register__form_input ${ !isValidName ? 'register__form_input-invalid' : ''}`
+        `register__form_input ${!isValidName ? 'register__form_input-invalid' : ''}`
     );
     const emailClassName = (
-        `register__form_input ${ !isValidEmail ? 'register__form_input-invalid' : ''}`
+        `register__form_input ${!isValidEmail ? 'register__form_input-invalid' : ''}`
     );
     const passwordClassName = (
-        `register__form_input ${ !isValidPassword ? 'register__form_input-invalid' : ''}`
+        `register__form_input ${!isValidPassword ? 'register__form_input-invalid' : ''}`
     );
 
+    function checkIsValidEmail(email) {
+        return /\S+@\S+\.\S+/.test(email);
+    }
 
     function handleEmailChange(e) {
-        setIsValidEmail(e.target.checkValidity());
-        !isValidEmail ? setErrorsEmail(e.target.validationMessage) : setErrorsEmail('');
+        if (!checkIsValidEmail(e.target.value)) {
+            setIsValidEmail(false);
+            setErrorsEmail('Введите корректный email');
+        } else {
+            setIsValidEmail(true);
+            setErrorsEmail('');
+        }
         setEmail(e.target.value);
     }
 
@@ -41,7 +49,7 @@ function Register(props) {
 
     function handleNameChange(e) {
         setIsValidName(e.target.checkValidity());
-        !isValidName ? setErrorsName(e.target.validationMessage) : setErrorsName('');
+        !isValidName ? setErrorsName('Введите корректное имя') : setErrorsName('');
         setName(e.target.value);
     }
 
@@ -59,15 +67,23 @@ function Register(props) {
             <h1 className="register__header">Добро пожаловать!</h1>
             <form className="register__form" onSubmit={handleSubmit}>
                 <span className="register__form_text">Имя</span>
-                <input className={nameClassName} placeholder={"Виталий"} onChange={handleNameChange}/>
-                {isValidName ? <span className="form_error">{`${errorsName}`}</span> : <div></div>}
+                <input className={nameClassName}
+                       placeholder={"Виталий"}
+                       onChange={handleNameChange}
+                       minLength={2}
+                       maxLength={30}/>
+                {!isValidName ? <span className="form_error">{`${errorsName}`}</span> : <div></div>}
                 <span className="register__form_text">E-mail</span>
-                <input className={emailClassName} placeholder={"pochta@yandex.ru"} onChange={handleEmailChange}/>
-                {isValidEmail ? <span className="form_error">{`${errorsEmail}`}</span> : <div></div>}
+                <input className={emailClassName}
+                       placeholder={"pochta@yandex.ru"}
+                       onChange={handleEmailChange}/>
+                {!isValidEmail ? <span className="form_error">{`${errorsEmail}`}</span> : <div></div>}
                 <span className="register__form_text">Пароль</span>
-                <input className={passwordClassName} type="password" onChange={handlePasswordChange}/>
-                {isValidPassword ? <span className="form_error">{`${errorsPassword}`}</span> : <div></div>}
-                <button className={ buttonClassName }>Зарегестрироваться</button>
+                <input className={passwordClassName}
+                       type="password"
+                       onChange={handlePasswordChange}/>
+                {!isValidPassword ? <span className="form_error">{`${errorsPassword}`}</span> : <div></div>}
+                <button className={buttonClassName}>Зарегестрироваться</button>
             </form>
             <div className="register__login">
                 <span className="register__login_text">Уже зарегистрированы?</span>

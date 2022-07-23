@@ -37,21 +37,38 @@ function MoviesCardList(props) {
     }, [width, props.cards]);
 
     function handleMoreButtonClick() {
-        const newArray = [...cardsForDisplay];
-        cardsForDisplayWithButtonNumber === 3 ?
+        console.log(props.cards);
+        if (props.cards.length - cardsForDisplay.length === 1) {
+            const newArray = [...cardsForDisplay];
+            newArray.push(
+                props.cards[newArray.length],);
+            setCardsForDisplay(newArray);
+        } else if ((props.cards.length - cardsForDisplay.length === 2)) {
+            const newArray = [...cardsForDisplay];
             newArray.push(
                 props.cards[newArray.length],
-                props.cards[newArray.length + 1],
-                props.cards[newArray.length + 2])
-            : newArray.push(
-                props.cards[newArray.length],
                 props.cards[newArray.length + 1]);
+            setCardsForDisplay(newArray);
+        } else {
+            const newArray = [...cardsForDisplay];
+            cardsForDisplayWithButtonNumber === 3 ?
+                newArray.push(
+                    props.cards[newArray.length],
+                    props.cards[newArray.length + 1],
+                    props.cards[newArray.length + 2])
+                : newArray.push(
+                    props.cards[newArray.length],
+                    props.cards[newArray.length + 1]);
 
-        setCardsForDisplay(newArray);
+            setCardsForDisplay(newArray);
+        }
+        console.log(cardsForDisplay);
     }
 
     return (
         <section>
+            {props.isNothingFound ? <div className="moviesCardList__nothing-found-message">Ничего не найдено</div> :
+                <div></div>}
             <div className="moviesCardList">
                 {cardsForDisplay.map((card) => (
                     <Card card={card}
@@ -64,8 +81,9 @@ function MoviesCardList(props) {
                     />
                 ))}
             </div>
-            {((props.cards.length > cardsForDisplayNumber) && !props.isSavedCards) ? <button className="moviesCardList__more-button"
-                                                                    onClick={handleMoreButtonClick}>Ещё</button> :
+            {((props.cards.length > cardsForDisplayNumber) && !props.isSavedCards && (props.cards.length > cardsForDisplay.length)) ?
+                <button className="moviesCardList__more-button"
+                        onClick={handleMoreButtonClick}>Ещё</button> :
                 <div></div>}
         </section>
     );

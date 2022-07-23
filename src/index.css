@@ -38,6 +38,7 @@
 /* MoviesCardList */
 @import url("components/MoviesCardList/MoviesCardList.css");
 @import url("components/MoviesCardList/__more-button/moviesCardList__more-button.css");
+@import url("components/MoviesCardList/__nothing-found-message/moviesCardList__nothing-found-message.css");
 
 /* Card */
 @import url("components/Card/Card.css");
@@ -138,6 +139,12 @@
 @import url("components/Login/__register/login__register.css");
 @import url("components/Login/__register/_text/login__register_text.css");
 @import url("components/Login/__register/_register-button/login__register_register-button.css");
+
+/* Not Found Page */
+@import url("components/PageNotFound/not-found.css");
+@import url("components/PageNotFound/__button-back/not-found__button-back.css");
+@import url("components/PageNotFound/__text/not-found__text.css");
+@import url("components/PageNotFound/__title/not-found__title.css");
 
 /* Menu */
 @import url("components/Menu/Menu.css");

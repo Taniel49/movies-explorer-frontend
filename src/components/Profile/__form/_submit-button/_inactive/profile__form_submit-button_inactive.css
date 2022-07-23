@@ -1,5 +1,5 @@
 .profile__form_submit-button_inactive{
     cursor: not-allowed;
     pointer-events: none;
-    background-color: #A0A0A0;
+    color: #A0A0A0;
 }

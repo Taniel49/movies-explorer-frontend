@@ -43,7 +43,7 @@ function Register(props) {
 
     function handlePasswordChange(e) {
         setIsValidPassword(e.target.checkValidity());
-        !isValidPassword ? setErrorsPassword(e.target.validationMessage) : setErrorsPassword('');
+        !isValidPassword ? setErrorsPassword('Введите пароль') : setErrorsPassword('');
         setPassword(e.target.value);
     }
 
@@ -81,7 +81,8 @@ function Register(props) {
                 <span className="register__form_text">Пароль</span>
                 <input className={passwordClassName}
                        type="password"
-                       onChange={handlePasswordChange}/>
+                       onChange={handlePasswordChange}
+                       required={true}/>
                 {!isValidPassword ? <span className="form_error">{`${errorsPassword}`}</span> : <div></div>}
                 <button className={buttonClassName}>Зарегестрироваться</button>
             </form>

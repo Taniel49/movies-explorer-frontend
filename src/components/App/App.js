@@ -17,12 +17,13 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 function App() {
     const history = useHistory();
     const [isOpenMenu, setIsOpenMenu] = React.useState(false);
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(!!localStorage.getItem('token'));
     const [currentUser, setCurrentUser] = React.useState({});
     const [isOpenPopup, setIsOpenPopup] = React.useState(false);
     const [popupCaption, setPopupCaption] = React.useState('');
     const [savedCards, setSavedCards] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [isReady, setIsReady] = React.useState(false);
 
     React.useEffect(() => {
         if (isLoggedIn) {
@@ -35,9 +36,11 @@ function App() {
                     console.log(err)
                 }
             )
+
             api.getMovies().then((res) => JSON.stringify(res.data))
                 .then((res) => {
                     setSavedCards(JSON.parse(res));
+                    setIsReady(true);
                 }).catch((err) => {
                     setPopupCaption(JSON.stringify(err.message));
                     handlePopup();
@@ -53,30 +56,30 @@ function App() {
                 Auf.getContent(token).then((res) => {
                     if (res) {
                         setIsLoggedIn(true);
-                        history.push("/movies");
                     }
                 }).catch((err) => {
                         setPopupCaption(JSON.stringify(err.message));
                         handlePopup();
                         console.log(err)
                     }
-                )
-                ;
+                );
             }
+        } else {
+            setIsReady(true)
         }
-    }, [history, isLoggedIn]);
+    }, [history, isLoggedIn, isReady]);
 
-    function handleMoviesSearch() {
-        apiMovies.getMovies().then((res) => {
+    async function handleMoviesSearch() {
+        try {
+            const movies = await apiMovies.getMovies()
             setIsLoading(false);
-            localStorage.setItem('movies', JSON.stringify(res));
-        }).catch((err) => {
-                setIsLoading(false)
-                setPopupCaption(JSON.stringify(err.message));
-                handlePopup();
-                console.log(err)
-            }
-        )
+            localStorage.setItem('movies', JSON.stringify(movies));
+        } catch (err) {
+            setIsLoading(false)
+            setPopupCaption(JSON.stringify(err.message));
+            handlePopup();
+            console.log(err)
+        }
     }
 
     function handleFavouritesClick(card) {
@@ -94,9 +97,7 @@ function App() {
             movieId: card.id,
         }).then((res) => JSON.stringify(res.data))
             .then((res) => {
-                console.log(savedCards)
                 setSavedCards([JSON.parse(res), ...savedCards]);
-                console.log(savedCards)
             }).catch((err) => {
                 setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
@@ -135,6 +136,7 @@ function App() {
     }
 
     function handleLogout() {
+        localStorage.removeItem('searchResults');
         localStorage.removeItem('token');
         setIsLoggedIn(false);
         history.push('/');
@@ -190,76 +192,78 @@ function App() {
         isLoading === true ? setIsLoading(false) : setIsLoading(true)
     }
 
+    console.log(savedCards);
+
     return (
         <div className="root">
-            <div className="page root__page">
-                <Switch>
-                    <Route path="/signin">
-                        <Login onLogin={handleLogin}
-                               isOpen={isOpenPopup}
-                               onClose={closePopup}
-                               caption={popupCaption}/>
-                    </Route>
-                    <Route path="/signup">
-                        <Register onRegister={handleRegister}
-                                  isOpen={isOpenPopup}
-                                  onClose={closePopup}
-                                  caption={popupCaption}/>
-                    </Route>
-                    <Route exact path="/">
-                        <Header isLoggedIn={isLoggedIn}
+            {isReady && <div className="page root__page"><Switch>
+                <Route path="/signin">
+                    <Login onLogin={handleLogin}
+                           isOpen={isOpenPopup}
+                           onClose={closePopup}
+                           caption={popupCaption}/>
+                </Route>
+                <Route path="/signup">
+                    <Register onRegister={handleRegister}
+                              isOpen={isOpenPopup}
+                              onClose={closePopup}
+                              caption={popupCaption}/>
+                </Route>
+                <Route exact path="/">
+                    <Header isLoggedIn={isLoggedIn}
+                            handleMenu={handleMenu}
+                            isOpenMenu={isOpenMenu}
+                            closeMenu={closeMenu}/>
+                    <Main/>
+                    <Footer/>
+                </Route>
+                <ProtectedRoute exact
+                                path="/profile"
+                                isLoggedIn={isLoggedIn}
+                                currentUser={currentUser}
+                                handleProfile={handleProfile}
+                                component={ContentProfile}
                                 handleMenu={handleMenu}
                                 isOpenMenu={isOpenMenu}
-                                closeMenu={closeMenu}/>
-                        <Main/>
-                        <Footer/>
-                    </Route>
-                    <ProtectedRoute exact
-                                    path="/profile"
-                                    isLoggedIn={isLoggedIn}
-                                    currentUser={currentUser}
-                                    handleProfile={handleProfile}
-                                    component={ContentProfile}
-                                    handleMenu={handleMenu}
-                                    isOpenMenu={isOpenMenu}
-                                    closeMenu={closeMenu}
-                                    isOpen={isOpenPopup}
-                                    onClose={closePopup}
-                                    caption={popupCaption}
-                                    handleLogout={handleLogout}/>
-                    <ProtectedRoute exact
-                                    path="/movies"
-                                    isLoggedIn={isLoggedIn}
-                                    currentUser={currentUser}
-                                    component={ContentMovies}
-                                    handleMenu={handleMenu}
-                                    isOpenMenu={isOpenMenu}
-                                    closeMenu={closeMenu}
-                                    handleMoviesSearch={handleMoviesSearch}
-                                    handleFavouritesClick={handleFavouritesClick}
-                                    isOpen={isOpenPopup}
-                                    onClose={closePopup}
-                                    caption={popupCaption}
-                                    handlePreloader={handlePreloader}
-                                    isLoading={isLoading}/>
-                    <ProtectedRoute exact
-                                    path="/saved-movies"
-                                    isLoggedIn={isLoggedIn}
-                                    currentUser={currentUser}
-                                    component={ContentSavedMovies}
-                                    handleMenu={handleMenu}
-                                    isOpenMenu={isOpenMenu}
-                                    closeMenu={closeMenu}
-                                    savedCards={savedCards}
-                                    handleDeleteClick={handleDeleteClick}
-                                    isOpen={isOpenPopup}
-                                    onClose={closePopup}
-                                    caption={popupCaption}/>
-                    <Route path="*">
-                        <PageNotFound/>
-                    </Route>
-                </Switch>
-            </div>
+                                closeMenu={closeMenu}
+                                isOpen={isOpenPopup}
+                                onClose={closePopup}
+                                caption={popupCaption}
+                                handleLogout={handleLogout}/>
+                <ProtectedRoute exact
+                                path="/movies"
+                                isLoggedIn={isLoggedIn}
+                                currentUser={currentUser}
+                                component={ContentMovies}
+                                handleMenu={handleMenu}
+                                isOpenMenu={isOpenMenu}
+                                closeMenu={closeMenu}
+                                handleMoviesSearch={handleMoviesSearch}
+                                handleFavouritesClick={handleFavouritesClick}
+                                isOpen={isOpenPopup}
+                                onClose={closePopup}
+                                caption={popupCaption}
+                                handlePreloader={handlePreloader}
+                                isLoading={isLoading}
+                                savedCards={savedCards}/>
+                <ProtectedRoute exact
+                                path="/saved-movies"
+                                isLoggedIn={isLoggedIn}
+                                currentUser={currentUser}
+                                component={ContentSavedMovies}
+                                handleMenu={handleMenu}
+                                isOpenMenu={isOpenMenu}
+                                closeMenu={closeMenu}
+                                savedCards={savedCards}
+                                handleDeleteClick={handleDeleteClick}
+                                isOpen={isOpenPopup}
+                                onClose={closePopup}
+                                caption={popupCaption}/>
+                <Route path="*">
+                    <PageNotFound/>
+                </Route>
+            </Switch>
+            </div>}
         </div>
     );
 }

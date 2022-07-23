@@ -37,7 +37,7 @@ function Login(props) {
 
     function handlePasswordChange(e) {
         setIsValidPassword(e.target.checkValidity());
-        !isValidPassword ? setErrorsPassword(e.target.validationMessage) : setErrorsPassword('');
+        !isValidPassword ? setErrorsPassword('Введите пароль') : setErrorsPassword('');
         setPassword(e.target.value);
     }
 
@@ -60,7 +60,10 @@ function Login(props) {
                        onChange={handleEmailChange}/>
                 {!isValidEmail ? <span className="form_error">{`${errorsEmail}`}</span> : <div></div>}
                 <span className="login__form_text">Пароль</span>
-                <input className={passwordClassName} type="password" onChange={handlePasswordChange}/>
+                <input className={passwordClassName}
+                       type="password"
+                       onChange={handlePasswordChange}
+                       required={true}/>
                 {!isValidPassword ? <span className="form_error">{`${errorsPassword}`}</span> : <div></div>}
                 <button className={buttonClassName}>Войти</button>
             </form>

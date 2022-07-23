@@ -2,7 +2,7 @@ import React from 'react';
 import saved from '../../images/saved.svg';
 
 function Card(props) {
-    const [isSignHidden, setIsSignHidden] = React.useState(true);
+    const [isSignHidden, setIsSignHidden] = React.useState(props.isLiked ? false : true);
     const [isFavButtonHidden, setIsFavButtonHidden] = React.useState(false);
     const SignClassName = (
         `card__saved-sign ${isSignHidden ? 'card__hidden' : ''}`
@@ -39,10 +39,10 @@ function Card(props) {
                 <h2 className="card__title">{props.card.nameRU}</h2>
                 <div className="card__length">{`${props.card.duration} м`}</div>
             </div>
-            {props.favouritesButton ?
+            {props.favouritesButton && !props.isLiked ?
                 <button className={FavButtonClassName} onClick={handleFavouritesClick}>Сохранить</button> :
                 <button className={DelButtonClassName} onClick={handleDeleteClick}></button>}
-            <img className={SignClassName} src={saved} alt={'Отметка сохраненного фильма'}/>
+            {props.isLiked && <img className={SignClassName} src={saved} alt={'Отметка сохраненного фильма'}/>}
         </div>
     );
 }

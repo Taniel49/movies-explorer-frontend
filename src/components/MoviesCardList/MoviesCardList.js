@@ -62,7 +62,6 @@ function MoviesCardList(props) {
 
             setCardsForDisplay(newArray);
         }
-        console.log(cardsForDisplay);
     }
 
     return (
@@ -78,6 +77,7 @@ function MoviesCardList(props) {
                           deleteButton={props.deleteButton}
                           onDeleteClick={props.handleDeleteClick}
                           handleFavouritesClick={props.handleFavouritesClick}
+                          isLiked = {!props.ifSavedCard && !!props.savedCards.find((savedCard)=>{return savedCard.movieId === card.id})}
                     />
                 ))}
             </div>

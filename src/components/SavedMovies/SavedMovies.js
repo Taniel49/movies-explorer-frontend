@@ -37,7 +37,8 @@ function SavedMovies(props) {
                 favouritesButton={false}
                 deleteButton={true}
                 handleDeleteClick={props.handleDeleteClick}
-                isNothingFound={isNothingFound}/>
+                isNothingFound={isNothingFound}
+                savedCards={props.savedCards}/>
         </div>
     );
 }

@@ -20,10 +20,10 @@ function Movies(props) {
         }
     }
 
-    function handleSearchSubmit(searchInput) {
+    async function handleSearchSubmit(searchInput) {
         if (localStorage.getItem('movies') === null) {
             props.handlePreloader();
-            props.handleMoviesSearch();
+            await props.handleMoviesSearch();
         }
 
         const foundedMovies = JSON.parse(localStorage.getItem('movies')).filter(({
@@ -52,7 +52,8 @@ function Movies(props) {
                                                           favouritesButton={true}
                                                           deleteButton={false}
                                                           handleFavouritesClick={props.handleFavouritesClick}
-                                                          isNothingFound={isNothingFound}/>}
+                                                          isNothingFound={isNothingFound}
+                                                          savedCards={props.savedCards}/>}
     </div>);
 }
 

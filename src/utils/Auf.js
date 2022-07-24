@@ -14,13 +14,12 @@ export const register = (email, password, name) => {
         })
     })
         .then((response) => {
-            try {
                 if (response.status === 200) {
                     return response.json();
+                } else if (response.status === 409) {
+                    throw new Error('Пользователь с таким email уже существует')
                 }
-            } catch (e) {
-                return (e)
-            }
+            return response
         })
         .then((res) => {
             return res;
@@ -42,7 +41,9 @@ export const authorize = (email, password) => {
             if (response.status === 200) {
                 return response.json();
             }
-            return response.json().then((data)=>{throw new Error(data.message)})
+            return response.json().then((data) => {
+                throw new Error(data.message)
+            })
         })
         .then((data) => {
             localStorage.setItem('token', data.token);

@@ -107,9 +107,18 @@ function App() {
     }
 
     function handleDeleteClick(card) {
-        api.deleteMovie(card._id).then(() => {
+        let cardForDelete;
+        if (card._id) {
+            cardForDelete = card
+        } else {
+            cardForDelete = savedCards.find((savedCard) => {
+                return savedCard.movieId === card.id
+            })
+        }
+
+        api.deleteMovie(cardForDelete._id).then(() => {
             const newArray = savedCards.filter((c) => {
-                return c._id !== card._id
+                return c._id !== cardForDelete._id
             })
             setSavedCards(newArray)
         }).catch((err) => {
@@ -143,13 +152,11 @@ function App() {
 
     function handleRegister(email, password, name) {
         Auf.register(email, password, name)
-            .then((res) => {
-                    if (res) {
+            .then(() => {
                         Auf.authorize(email, password).then(() => {
                             setIsLoggedIn(true);
                             history.push('/movies');
                         })
-                    }
                 }
             ).catch((err) => {
                 setPopupCaption(JSON.stringify(err.message));

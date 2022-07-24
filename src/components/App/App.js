@@ -109,7 +109,6 @@ function App() {
     function handleDeleteClick(card) {
         api.deleteMovie(card._id).then(() => {
             const newArray = savedCards.filter((c) => {
-                console.log(typeof c)
                 return c._id !== card._id
             })
             setSavedCards(newArray)

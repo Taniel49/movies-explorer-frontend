@@ -7,6 +7,10 @@ function SavedMovies(props) {
     const [cards, setCards] = React.useState(props.savedCards);
     const [isNothingFound, setIsNothingFound] = React.useState(false);
 
+    React.useEffect(()=>{
+        setCards(props.savedCards);
+    }, [props.savedCards])
+
     function handleCheckbox(event) {
         if (event.target.checked) {
             setIsChecked(true);

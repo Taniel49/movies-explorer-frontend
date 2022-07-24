@@ -26,6 +26,8 @@ function Card(props) {
 
     function handleDeleteClick() {
         props.onDeleteClick(props.card)
+        setIsFavButtonHidden(false);
+        setIsSignHidden(true);
     }
 
     return (

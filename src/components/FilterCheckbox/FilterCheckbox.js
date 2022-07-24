@@ -10,7 +10,7 @@ function FilterCheckbox(props) {
                 <input className="filterCheckbox__input"
                        type="checkbox"
                        id="short-movies"
-                       defaultChecked={(localStorage.getItem('searchResults') === null)
+                       defaultChecked={(localStorage.getItem('searchResults') === null) || props.isSavedCards
                                ? true
                                : (JSON.parse(localStorage.getItem('searchResults'))).isChecked}
                        onChange={handleChange}/>

@@ -53,7 +53,8 @@ function Movies(props) {
                                                           deleteButton={false}
                                                           handleFavouritesClick={props.handleFavouritesClick}
                                                           isNothingFound={isNothingFound}
-                                                          savedCards={props.savedCards}/>}
+                                                          savedCards={props.savedCards}
+                                                          handleDeleteClick={props.handleDeleteClick}/>}
     </div>);
 }
 

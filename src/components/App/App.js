@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, useHistory} from 'react-router-dom';
+import {Redirect, Route, Switch, useHistory} from 'react-router-dom';
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -162,7 +162,9 @@ function App() {
             name: name,
             email: email
         }).then((result) => {
-            setCurrentUser(result.data)
+            setCurrentUser(result.data);
+            setPopupCaption('Профиль успешно изменен');
+            handlePopup();
         }).catch((err) => {
                 setPopupCaption(JSON.stringify(err.message));
                 handlePopup();
@@ -191,22 +193,24 @@ function App() {
         isLoading === true ? setIsLoading(false) : setIsLoading(true)
     }
 
-    console.log(savedCards);
-
     return (
         <div className="root">
             {isReady && <div className="page root__page"><Switch>
                 <Route path="/signin">
-                    <Login onLogin={handleLogin}
-                           isOpen={isOpenPopup}
-                           onClose={closePopup}
-                           caption={popupCaption}/>
+                    {() =>
+                        isLoggedIn ? <Redirect to="./"/> : <Login onLogin={handleLogin}
+                                                                  isOpen={isOpenPopup}
+                                                                  onClose={closePopup}
+                                                                  caption={popupCaption}/>
+                    }
                 </Route>
                 <Route path="/signup">
-                    <Register onRegister={handleRegister}
-                              isOpen={isOpenPopup}
-                              onClose={closePopup}
-                              caption={popupCaption}/>
+                    {() =>
+                        isLoggedIn ? <Redirect to="./"/> : <Register onRegister={handleRegister}
+                                                                     isOpen={isOpenPopup}
+                                                                     onClose={closePopup}
+                                                                     caption={popupCaption}/>
+                    }
                 </Route>
                 <Route exact path="/">
                     <Header isLoggedIn={isLoggedIn}
@@ -244,7 +248,8 @@ function App() {
                                 caption={popupCaption}
                                 handlePreloader={handlePreloader}
                                 isLoading={isLoading}
-                                savedCards={savedCards}/>
+                                savedCards={savedCards}
+                                handleDeleteClick={handleDeleteClick}/>
                 <ProtectedRoute exact
                                 path="/saved-movies"
                                 isLoggedIn={isLoggedIn}

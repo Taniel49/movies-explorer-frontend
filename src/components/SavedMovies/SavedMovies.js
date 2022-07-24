@@ -7,7 +7,7 @@ function SavedMovies(props) {
     const [cards, setCards] = React.useState(props.savedCards);
     const [isNothingFound, setIsNothingFound] = React.useState(false);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         setCards(props.savedCards);
     }, [props.savedCards])
 
@@ -34,7 +34,8 @@ function SavedMovies(props) {
     return (
         <div>
             <SearchForm onSearch={handleSearchSubmit}
-                        onChange={handleCheckbox}/>
+                        onChange={handleCheckbox}
+                        isSavedCards={true}/>
             <MoviesCardList
                 isSavedCards={true}
                 cards={cards}

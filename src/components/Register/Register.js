@@ -71,7 +71,8 @@ function Register(props) {
                        placeholder={"Виталий"}
                        onChange={handleNameChange}
                        minLength={2}
-                       maxLength={30}/>
+                       maxLength={30}
+                       required={true}/>
                 {!isValidName ? <span className="form_error">{`${errorsName}`}</span> : <div></div>}
                 <span className="register__form_text">E-mail</span>
                 <input className={emailClassName}

@@ -22,13 +22,14 @@ function SearchForm(props) {
                            type="text"
                            required
                            placeholder="Фильм"
-                           defaultValue={(localStorage.getItem('searchResults') === null)
+                           defaultValue={(localStorage.getItem('searchResults') === null) || props.isSavedCards
                                ? null
                                : (JSON.parse(localStorage.getItem('searchResults'))).input}
                            onChange={handleSearchInputChange}/>
                     <button type="submit" className="search-form__submit-button">Найти</button>
                 </div>
-                <FilterCheckbox handleCkeckbox={props.onChange}/>
+                <FilterCheckbox handleCkeckbox={props.onChange}
+                                isSavedCards={props.isSavedCards}/>
             </form>
         </section>
     )

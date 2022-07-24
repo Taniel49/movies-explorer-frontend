@@ -42,7 +42,7 @@ function Card(props) {
             {props.favouritesButton && !props.isLiked ?
                 <button className={FavButtonClassName} onClick={handleFavouritesClick}>Сохранить</button> :
                 <button className={DelButtonClassName} onClick={handleDeleteClick}></button>}
-            {props.isLiked && <img className={SignClassName} src={saved} alt={'Отметка сохраненного фильма'}/>}
+            {props.isLiked && <button onClick={handleDeleteClick}><img className={SignClassName} src={saved} alt={'Отметка сохраненного фильма'}/></button>}
         </div>
     );
 }

@@ -1,6 +1,8 @@
 import React from 'react';
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Profile(props) {
+    const currentUser = React.useContext(CurrentUserContext);
     const [email, setEmail] = React.useState('');
     const [name, setName] = React.useState('');
     const [errorsEmail, setErrorsEmail] = React.useState('');
@@ -51,19 +53,19 @@ function Profile(props) {
 
     return (
         <section className="profile">
-            <h1 className="profile__header">{`Привет, ${props.currentUser.name}`}</h1>
+            <h1 className="profile__header">{`Привет, ${currentUser.name}`}</h1>
             <form className="profile__form" onSubmit={handleSubmit}>
                 <div className="profile__form_section">
                     <span className="profile__form_input-name">Имя</span>
                     <input className={nameClassName}
-                           defaultValue={`${props.currentUser.name}`}
+                           defaultValue={`${currentUser.name}`}
                            onChange={handleNameChange} minLength={2} maxLength={30}/>
                     {!isValidName ? <span className="form_error">{`${errorsName}`}</span> : <div></div>}
                 </div>
                 <div className="profile__form_section">
                     <span className="profile__form_input-name">E-mail</span>
                     <input className={emailClassName}
-                           defaultValue={`${props.currentUser.email}`}
+                           defaultValue={`${currentUser.email}`}
                            onChange={handleEmailChange}/>
                     {!isValidEmail ? <span className="form_error">{`${errorsEmail}`}</span> : <div></div>}
                 </div>

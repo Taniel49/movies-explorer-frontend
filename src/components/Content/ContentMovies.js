@@ -17,8 +17,9 @@ function ContentMovies(props) {
                     <Movies handleMoviesSearch={props.handleMoviesSearch}
                             handleFavouritesClick={props.handleFavouritesClick}
                             handlePreloader={props.handlePreloader}
-                            isLoading = {props.isLoading}
-                    savedCards = {props.savedCards}/>
+                            isLoading={props.isLoading}
+                            savedCards={props.savedCards}
+                            handleDeleteClick={props.handleDeleteClick}/>
                     <Footer/>
                     <InfoTooltip isOpen={props.isOpen}
                                  onClose={props.onClose}

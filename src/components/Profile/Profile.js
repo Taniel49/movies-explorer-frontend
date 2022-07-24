@@ -3,8 +3,8 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Profile(props) {
     const currentUser = React.useContext(CurrentUserContext);
-    const [email, setEmail] = React.useState('');
-    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState(`${currentUser.email}`);
+    const [name, setName] = React.useState(`${currentUser.name}`);
     const [errorsEmail, setErrorsEmail] = React.useState('');
     const [errorsName, setErrorsName] = React.useState('');
     const [isValidEmail, setIsValidEmail] = React.useState(true);

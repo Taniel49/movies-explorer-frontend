@@ -143,11 +143,13 @@ function App() {
 
     function handleRegister(email, password, name) {
         Auf.register(email, password, name)
-            .then(() => {
-                    Auf.authorize(email, password).then(() => {
-                        setIsLoggedIn(true);
-                        history.push('/movies');
-                    })
+            .then((res) => {
+                    if (res) {
+                        Auf.authorize(email, password).then(() => {
+                            setIsLoggedIn(true);
+                            history.push('/movies');
+                        })
+                    }
                 }
             ).catch((err) => {
                 setPopupCaption(JSON.stringify(err.message));

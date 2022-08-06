@@ -1,0 +1,12 @@
+.menu__navigation_block-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 159px;
+}
+
+@media screen and (max-width: 767px) {
+    .menu__navigation_block-top {
+        margin-top: 144px;
+    }
+}

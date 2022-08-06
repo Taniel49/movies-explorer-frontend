@@ -1,0 +1,20 @@
+.portfolio__links_text {
+    font-family: inherit;
+    font-size: 30px;
+    line-height: 50px;
+    margin: 0;
+}
+
+@media screen and (max-width: 1023px) {
+    .portfolio__links_text {
+        font-size: 28px;
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__links_text {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}

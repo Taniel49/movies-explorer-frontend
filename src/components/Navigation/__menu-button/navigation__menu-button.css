@@ -1,0 +1,21 @@
+.navigation__menu-button {
+    appearance: none;
+    background-color: transparent;
+    background-position: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    display: none;
+    margin-left:auto
+}
+
+.navigation__menu-button:hover {
+    transition: ease-in;
+    opacity: 0.6;
+}
+
+@media screen and (max-width:1023px){
+    .navigation__menu-button{
+        display: block;
+    }
+}

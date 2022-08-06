@@ -1,0 +1,41 @@
+.nav-tab__link {
+    color: #FFFFFF;
+    background: #E8E8E8;
+    list-style-type: none;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.nav-tab__link > button {
+    min-width: 96px;
+    min-height: 36px;
+    text-align: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    outline: none;
+    appearance: none;
+    border: none;
+    background: #E8E8E8;
+    border-radius: 10px;
+}
+
+.nav-tab__link:hover {
+    transition: ease-in;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+    .nav-tab__link {
+        margin-right: 6px;
+    }
+
+    .nav-tab__link > button {
+        min-width: 82px;
+        min-height: 26px;
+        font-size: 10px;
+        line-height: 16px;
+    }
+}

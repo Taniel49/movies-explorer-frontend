@@ -1,0 +1,20 @@
+.techs__techs-container {
+    display: flex;
+    margin: 100px auto 0;
+    max-width: 690px;
+}
+
+@media screen and (max-width: 1023px) {
+    .techs__techs-container {
+        margin: 83px auto 0;
+        max-width: 648px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .techs__techs-container {
+        flex-wrap: wrap;
+        margin: 40px auto 0;
+        max-width: 188px;
+    }
+}

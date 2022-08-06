@@ -1,1 +1,1 @@
-# movies-explorer-frontend
+https://mydiploma.students.nomoreparties.sbs/

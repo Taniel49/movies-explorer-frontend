@@ -1,0 +1,22 @@
+.about-project__article_text {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 26px 0 0;
+}
+
+@media screen and (max-width: 1023px) {
+    .about-project__article_text {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 22px 0 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__article_text {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 16px 0 0;
+    }
+}

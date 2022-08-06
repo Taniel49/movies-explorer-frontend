@@ -1,0 +1,23 @@
+.portfolio__small-header {
+    margin-top: 101px;
+    margin-bottom: 30px;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #A0A0A0;
+}
+
+@media screen and (max-width: 1023px) {
+    .portfolio__small-header {
+        margin-top: 91px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__small-header {
+        margin-top: 70px;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}

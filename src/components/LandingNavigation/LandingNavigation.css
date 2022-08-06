@@ -1,0 +1,6 @@
+.landing-navigation{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}

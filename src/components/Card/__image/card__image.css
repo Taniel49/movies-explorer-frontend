@@ -1,0 +1,22 @@
+.card__image {
+    object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    max-width: 360px;
+    max-height: 201px;
+}
+
+@media screen and (max-width: 1023px) {
+    .card__image {
+        max-width: 339px;
+        max-height: 190px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card__image {
+        max-width: 300px;
+        max-height: 168px;
+    }
+}

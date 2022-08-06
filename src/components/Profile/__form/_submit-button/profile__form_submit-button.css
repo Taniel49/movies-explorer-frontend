@@ -1,0 +1,31 @@
+.profile__form_submit-button {
+    appearance: none;
+    background-color: transparent;
+    background-position: center;
+    padding: 0;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-top: 220px;
+}
+
+.profile__form_submit-button:hover {
+    transition: ease-in;
+    opacity: 0.6;
+}
+
+@media screen and (max-width:1023px){
+    .profile__form_submit-button {
+        margin-top: 210px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .profile__form_submit-button {
+        margin-top: 379px;
+    }
+}

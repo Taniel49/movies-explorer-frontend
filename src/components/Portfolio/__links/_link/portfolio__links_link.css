@@ -1,0 +1,17 @@
+.portfolio__links_link {
+    background-image: url("../../../../images/arrow.svg");
+    appearance: none;
+    background-color: transparent;
+    background-position: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+}
+
+.portfolio__links_link:hover {
+    transition: ease-in;
+    opacity: 0.6;
+}

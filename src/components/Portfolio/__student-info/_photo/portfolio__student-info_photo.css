@@ -1,0 +1,20 @@
+.portfolio__student-info_photo {
+    max-width: 270px;
+    max-height: 327px;
+}
+
+@media screen and (max-width: 1023px) {
+    .portfolio__student-info_photo {
+        max-width: 255px;
+        max-height: 307px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__student-info_photo {
+        max-width: 292px;
+        max-height: 352px;
+        margin-bottom: 40px;
+    }
+}

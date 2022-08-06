@@ -1,0 +1,12 @@
+.search-form__search{
+    display: flex;
+    border-bottom: 1px solid #E8E8E8;
+    align-items: center;
+    padding: 0 0 13px 0;
+}
+
+@media screen and (max-width:767px){
+    .search-form__search{
+        padding: 0 0 9px 0;
+    }
+}

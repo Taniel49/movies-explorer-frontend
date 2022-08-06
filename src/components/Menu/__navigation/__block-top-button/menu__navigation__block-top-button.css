@@ -1,0 +1,19 @@
+.menu__navigation__block-top-button {
+    margin-bottom: 22px;
+    appearance: none;
+    background-color: transparent;
+    background-position: center;
+    padding: 0 0 4px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    border: none;
+    outline: none;
+}
+
+.menu__navigation__block-top-button:hover {
+    transition: ease-in;
+    border-bottom: solid 1px black;
+    padding-bottom: 3px;
+}

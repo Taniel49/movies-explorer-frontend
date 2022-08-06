@@ -1,0 +1,19 @@
+.menu__close-button {
+    position: absolute;
+    left: 85%;
+    top: 5%;
+    background-image: url("../../../images/close-button.svg");
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: none;
+    appearance: none;
+    background-color:transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menu__close-button:hover{
+    transition: ease-in;
+    opacity: 0.6;
+}

@@ -1,0 +1,23 @@
+.card__title {
+    font: inherit;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    margin: 0 0 0 14px;
+}
+
+@media screen and (max-width: 1023px) {
+    .card__title {
+        font-size: 13px;
+        line-height: 16px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card__title {
+        font-size: 12px;
+        line-height: 15px;
+        margin: 0;
+    }
+}

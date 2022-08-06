@@ -1,0 +1,17 @@
+.techs__header {
+    font-family: inherit;
+    font-size: 22px;
+    line-height: 27px;
+    padding-bottom: 23px;
+    font-weight: 400;
+    border-bottom: 1px solid;
+    margin:0;
+}
+
+@media screen and (max-width: 767px) {
+    .techs__header {
+        font-size: 18px;
+        line-height: 22px;
+        padding-bottom: 28px;
+    }
+}

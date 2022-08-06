@@ -1,0 +1,15 @@
+.about-project__length {
+    max-width: 228px;
+    text-align: center;
+    width: 100%;
+}
+
+.about-project__length:nth-child(2) {
+    max-width: 912px;
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__length {
+        max-width: 140px;
+    }
+}

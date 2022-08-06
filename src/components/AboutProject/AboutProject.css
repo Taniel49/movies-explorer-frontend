@@ -1,0 +1,15 @@
+.about-project{
+    margin: 110px 70px 0;
+}
+
+@media screen and (max-width:1023px){
+    .about-project{
+       margin: 90px 50px 0;
+    }
+}
+
+@media screen and (max-width:767px){
+    .about-project{
+        margin: 70px 18px 0;
+    }
+}

@@ -1,0 +1,13 @@
+.login__register_text {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+}
+
+@media screen and (max-width: 767px) {
+    .login__register_text {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

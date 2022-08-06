@@ -1,0 +1,15 @@
+.portfolio__student-info_bio {
+    max-width: 600px;
+}
+
+@media screen and (max-width: 1023px) {
+    .portfolio__student-info_bio {
+        max-width: 364px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__student-info_bio {
+        max-width: 292px;
+    }
+}

@@ -1,0 +1,12 @@
+.about-project__length_week {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 36px;
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__length_week {
+        font-size: 11px;
+    }
+}

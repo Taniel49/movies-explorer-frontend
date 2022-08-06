@@ -1,0 +1,16 @@
+.about-project__length_project-type {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    margin: 14px 0 0;
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__length_project-type {
+        font-size: 11px;
+        line-height: 13px;
+        margin: 10px 0 0;
+    }
+}

@@ -1,0 +1,15 @@
+.filterCheckbox__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.filterCheckbox__input + .filterCheckbox__pseudo-item {
+    background-image: url('../../../images/checkbox_disabled.svg');
+}
+
+.filterCheckbox__input:checked + .filterCheckbox__pseudo-item {
+    background-image: url('../../../images/checkbox_enabled.svg');
+}

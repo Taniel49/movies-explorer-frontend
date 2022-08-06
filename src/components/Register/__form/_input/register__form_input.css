@@ -1,0 +1,21 @@
+.register__form_input {
+    font-family: inherit;
+    border: none;
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0 0 20px;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    padding: 15px 0 15px 15px;
+}
+
+.register__form_input:focus {
+    outline: solid 1px rgb(118, 118, 118);
+}
+
+.register__form_input::placeholder {
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 16px;
+    color: black;
+}

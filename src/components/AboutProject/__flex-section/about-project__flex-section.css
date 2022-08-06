@@ -1,0 +1,30 @@
+.about-project__flex-section {
+    margin-top: 70px;
+    display: flex;
+}
+
+.about-project__flex-section:nth-child(3) {
+    margin-top: 110px;
+}
+
+@media screen and (max-width: 1023px) {
+    .about-project__flex-section:nth-child(3) {
+        margin-top: 93px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__flex-section {
+        margin-top: 60px;
+    }
+
+    .about-project__flex-section:nth-child(2) {
+        margin-top: 60px;
+        flex-direction: column;
+    }
+
+    .about-project__flex-section:nth-child(3) {
+        margin: 60px;
+        justify-content: center;
+    }
+}

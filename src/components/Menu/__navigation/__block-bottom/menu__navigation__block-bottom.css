@@ -1,0 +1,11 @@
+.menu__navigation__block-bottom{
+    display: flex;
+    margin-bottom: 92px;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .menu__navigation__block-bottom {
+        margin-bottom: 48px;
+    }
+}

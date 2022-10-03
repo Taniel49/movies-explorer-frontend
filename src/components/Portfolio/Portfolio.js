@@ -43,7 +43,7 @@ function Portfolio() {
                 </li>
                 <li className="portfolio__links">
                     <p className="portfolio__links_text">Одностраничное приложение</p>
-                    <a href="*" target="_blank" rel="noreferrer">
+                    <a href="https://mesto-frontend.onrender.com" target="_blank" rel="noreferrer">
                         <button className="portfolio__links_link"></button>
                     </a>
                 </li>

@@ -80,6 +80,6 @@ class APIMain {
 }
 
 
-const api = new APIMain('https://api.mydiploma.students.nomoreparties.sbs', '');
+const api = new APIMain('https://movies-api.onrender.com', '');
 api.setAuthorisation(localStorage.getItem('token'));
 export default api;

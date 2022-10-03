@@ -3,6 +3,8 @@
     font-size: 13px;
     line-height: 16px;
     margin: 0 20px 0 0;
+    color: black;
+    text-decoration: none;
 }
 
 .footer__text:last-child {

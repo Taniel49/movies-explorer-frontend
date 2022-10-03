@@ -10,6 +10,7 @@
     border:none;
     appearance: none;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .landing-navigation__login-button:hover{

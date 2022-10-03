@@ -1,5 +1,5 @@
 import api from '../utils/MainApi';
-export const BASE_URL = 'https://api.mydiploma.students.nomoreparties.sbs';
+export const BASE_URL = 'https://movies-api.onrender.com';
 
 export const register = (email, password, name) => {
     return fetch(`${BASE_URL}/signup`, {

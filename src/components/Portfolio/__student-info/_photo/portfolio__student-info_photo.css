@@ -1,6 +1,7 @@
 .portfolio__student-info_photo {
     max-width: 270px;
     max-height: 327px;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 1023px) {

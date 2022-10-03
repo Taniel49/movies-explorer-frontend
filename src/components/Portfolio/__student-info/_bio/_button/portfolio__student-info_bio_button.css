@@ -1,5 +1,7 @@
 .portfolio__student-info_bio_button {
     appearance: none;
+    text-decoration: none;
+    color: black;
     background-color: transparent;
     background-position: center;
     padding: 0;
@@ -10,6 +12,7 @@
     border: none;
     outline: none;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .portfolio__student-info_bio_button:hover {

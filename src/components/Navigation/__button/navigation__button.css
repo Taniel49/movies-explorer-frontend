@@ -9,6 +9,7 @@
     line-height: 18px;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 .navigation__button:nth-child(1){
